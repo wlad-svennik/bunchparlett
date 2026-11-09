@@ -53,7 +53,7 @@ def getecb(M,s):
 def bunchparlett(M):
     """Compute P and L factors of M using Bunch-Parlett. The algorithm is
     recursive."""
-    if M.rows <= 2:
+    if M.rows <= 2 or M == zeros(M.rows):
         P = eye(M.rows)
         L = eye(M.rows)
         return P, L
@@ -77,4 +77,3 @@ def LDL(M):
     L = simplify(L)
     D = L ** -1 * P * M * P.H * L.H ** -1
     return L, D, P
-
